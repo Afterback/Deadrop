@@ -2,6 +2,7 @@
 #include "engine/runtime/systems/core/ISystem.h"
 #include "engine/core/math/math.h"
 #include "engine/core/types.h"
+#include "engine/core/pair.h"
 #include <array>
 #include <tuple>
 
@@ -226,8 +227,8 @@ namespace deadrop
             // variables for regular mouse movement
             vec2f m_mouse_position = { 0.0f, 0.0f };
             vec2f m_mouse_perframe_position{ 0.0f, 0.0f };
-            std::pair<bool, MOUSE_WHEEL_DIRECTION> m_mouse_wheel;
-            std::pair<bool, MOUSE_WHEEL_DIRECTION> m_mouse_wheel_last;
+            pair<bool, MOUSE_WHEEL_DIRECTION> m_mouse_wheel;
+            pair<bool, MOUSE_WHEEL_DIRECTION> m_mouse_wheel_last;
         };
     }
 }
