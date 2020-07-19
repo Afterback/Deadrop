@@ -13,14 +13,14 @@ workspace "ProjectDeadrop"
 	filter "platforms:x64"
 		architecture "x64"
 	
-	filter "platforms:Windows"
-		defines { "PLATFORM_WIN" }
+	filter "system:Windows"
+		defines { "PROJECT_PLATFORM_WIN" }
 		
-	filter { "platforms:Windows" and "platforms:x32" }
-		defines { "PLATFORM_WIN32" }
+	filter { "system:Windows" and "platforms:x32" }
+		defines { "PROJECT_PLATFORM_WIN32" }
 	
-	filter { "platforms:Windows" and "platforms:x64" }
-		defines { "PLATFORM_WIN64" }
+	filter { "system:Windows" and "platforms:x64" }
+		defines { "PROJECT_PLATFORM_WIN64" }
 		
 	-- These settings will apply to the entire workspace or project (whichever is active)
 	filter {}
