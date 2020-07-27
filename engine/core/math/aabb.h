@@ -14,7 +14,7 @@ namespace deadrop
             AABB(const vec3f& min, const vec3f& max) : m_min(min), m_max(max) {}
 
             // returns whether this AABB intersects with a specific AABB
-            bool intersects(const AABB& aabb) const;
+            inline bool intersects(const AABB& aabb) const;
 
         private:
             vec3f m_min;
