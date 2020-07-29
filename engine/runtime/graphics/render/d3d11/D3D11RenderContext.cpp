@@ -332,12 +332,12 @@ void D3D11RenderContext::BindUniformBuffer(IUniformBuffer* uniformBuffer, const 
     {
     case BIND_STAGE::BIND_STAGE_VERTEX:
     {
-        m_deviceContext->VSSetConstantBuffers(pUniformBuffer->mi_desc.bindSlot, 1, pUniformBuffer->m_buffer.GetAddressOf());
+        m_deviceContext->VSSetConstantBuffers(pUniformBuffer->m_desc.bindSlot, 1, pUniformBuffer->m_buffer.GetAddressOf());
         break;
     }
     case BIND_STAGE::BIND_STAGE_PIXEL:
     {
-        m_deviceContext->PSSetConstantBuffers(pUniformBuffer->mi_desc.bindSlot, 1, pUniformBuffer->m_buffer.GetAddressOf());
+        m_deviceContext->PSSetConstantBuffers(pUniformBuffer->m_desc.bindSlot, 1, pUniformBuffer->m_buffer.GetAddressOf());
         break;
     }
     case BIND_STAGE::BIND_STAGE_GEOMETRY:
