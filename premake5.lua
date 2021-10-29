@@ -55,6 +55,9 @@ workspace "ProjectDeadrop"
 	filter {"system:windows", "action:vs*"}
 		systemversion("latest")
 
-		-- Build the engine.
+    -- Build the engine.
 	include("engine/build_engine.lua")
-		
+	
+    -- Build the Sandbox game project
+    include("sandbox/build_sandbox.lua")
+    

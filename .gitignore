@@ -262,3 +262,6 @@ __pycache__/
 
 # Ignore the build folder that is created by the build system.
 build/**
+
+# Ignore the sandbox project binary working directory
+sandbox/bin/**
