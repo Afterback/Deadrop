@@ -414,8 +414,8 @@ bool WindowSystem::Show()
 {
     if (m_window_handle)
     {
-        bool success = ShowWindow(static_cast<HWND>(m_window_handle), SW_SHOWNORMAL);
-        return success;
+        bool window_previously_visible = ShowWindow(static_cast<HWND>(m_window_handle), SW_SHOWNORMAL) != 0;
+        return window_previously_visible;
     }
 
     return false;

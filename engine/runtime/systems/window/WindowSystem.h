@@ -65,6 +65,8 @@ namespace deadrop
             bool Update();
 
             // shows the window
+            // returns true if the window was previously visible,
+            // and false if it was not previously visible
             bool Show();
 
             // hides the window
