@@ -28,21 +28,21 @@ bool Application::Init()
         return false;
     }
 
-    // show the actual windows
+    // show the actual window
     window_system->Show();
 
     // prepare the keyboard callback handlers for the events the window can fire
-    auto WindowEvenHandler_OnKeyDown = [](u8 key) {
+    auto WindowEventHandler_OnKeyDown = [](u8 key) {
         // a key down event was fired
         // the first argument says which key was down
     };
 
-    auto WindowEvenHandler_OnKeyUp = [](u8 key) {
+    auto WindowEventHandler_OnKeyUp = [](u8 key) {
         // a key up event was fired
         // the first argument says which key was up
     };
 
-    auto WindowEvenHandler_OnLostKeyboardFocus = [](u64 window_handle)
+    auto WindowEventHandler_OnLostKeyboardFocus = [](u64 window_handle)
     {
         // the window just lost keyboard focus
         // the first argument is a handle to the window that lost the keyboard focus
@@ -52,11 +52,11 @@ bool Application::Init()
 
     // register the event handlers that we created previously
     // so they can get called by the window when event happen
-    window_system->SetKeyboardCallbacks(WindowEvenHandler_OnKeyDown,
-        WindowEvenHandler_OnKeyUp, WindowEvenHandler_OnLostKeyboardFocus);
+    window_system->SetKeyboardCallbacks(WindowEventHandler_OnKeyDown,
+        WindowEventHandler_OnKeyUp, WindowEventHandler_OnLostKeyboardFocus);
 
-    // update the window for it stay responsive
-    // when the user closes the windows, Update() will return true,
+    // update the window for it to stay responsive and process input
+    // when the user closes the window, Update() will return true,
     // which causes this loop to stop looping
     while (!window_system->Update())
     {
