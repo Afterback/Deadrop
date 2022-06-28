@@ -88,6 +88,11 @@ namespace deadrop
             // NOTE: returns {0, 0} if it fails
             pair<unsigned int, unsigned int> GetWindowSize();
 
+            // polls and processes the input messages directly from the input devices (raw input data)
+            // NOTE: this function must be called frequently for it to process the input data, call it on per-frame basis
+            // NOTE: this function can process multiple input messages at once (currently the max count is 16 messages per-call)
+            void ProcessRawInput();
+
             // message loop
             // NOTE: on Windows, this is a redirected WndProc
             // NOTE: it must be public so that the actual WndProc can call it

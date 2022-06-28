@@ -360,6 +360,7 @@ LRESULT WindowSystem::message_loop(HWND hWnd, UINT message, WPARAM wParam, LPARA
             // failed to retrieve raw input data
             return 0;
         }
+
         // handle raw mouse input 
         if (raw.header.dwType == RIM_TYPEMOUSE)
         {
@@ -491,3 +492,84 @@ deadrop::pair<unsigned int, unsigned int> WindowSystem::GetWindowSize()
     return { 0, 0 };
 }
 
+// NOTE: we will still get WM_INPUT messages in the WndProc from time to time
+// so we process those too, but hopefully this function will process most of the messages
+// NOTE: WM_INPUT messages will still be received for example when the window title bar is clicked
+void WindowSystem::ProcessRawInput()
+{
+    UINT cbSize = 0;
+    if (GetRawInputBuffer(NULL, &cbSize, sizeof(RAWINPUTHEADER)) != 0)
+    {
+        // error, call to GetRawInputBuffer() failed
+        return;
+    }
+
+    // process up to 16 messages
+    // NOTE: this number must be at least 16 to make sure we process the data in batches
+    // (must be at least 8 on WOW64 or it won't work correctly!)
+    constexpr UINT k_max_message_count_to_process = 16;
+    cbSize *= k_max_message_count_to_process;
+
+    // allocate a buffer large enough
+    std::vector<BYTE> buffer(cbSize);
+    PRAWINPUT pRawInput = (PRAWINPUT)buffer.data();
+    if (pRawInput == NULL)
+    {
+        // error, failed to allocate enough memory
+        return;
+    }
+
+    // loop and process the messages
+    while (true)
+    {
+        UINT cbSizeT = cbSize;
+        UINT nInput = GetRawInputBuffer(pRawInput, &cbSizeT, sizeof(RAWINPUTHEADER));
+        if (nInput == 0)
+        {
+            break;
+        }
+
+        // NOTE: guard against GetRawInputBuffer() returning UINT_MAX when 'cbSize' is not set correctly
+        // in order to avoid accidentally allocating a huge amount of memory
+        constexpr UINT k_guard_max = k_max_message_count_to_process;
+        if (nInput > k_guard_max)
+        {
+            // error, the returned value from GetRawInputBuffer() is way bigger than we can handle
+            return;
+        }
+
+        // allocate a buffer big enough to hold the data
+        // TODO: use an allocator instead!
+        auto buffer_array = std::make_unique<PRAWINPUT[]>(nInput);
+        PRAWINPUT* paRawInput = buffer_array.get();
+        if (paRawInput == NULL)
+        {
+            break;
+        }
+
+        // defined for NEXTRAWINPUTBLOCK() to compile
+        using QWORD = __int64;
+
+        // loop and extract the data
+        PRAWINPUT pri = pRawInput;
+        for (UINT i = 0; i < nInput; ++i)
+        {
+            paRawInput[i] = pri;
+
+            // handle raw mouse input 
+            if (pri->header.dwType == RIM_TYPEMOUSE)
+            {
+                // process the mouse data
+                i64 mouse_raw_x = pri->data.mouse.lLastX;
+                i64 mouse_raw_y = pri->data.mouse.lLastY;
+
+                // call the callback with the data if it was set
+                if (m_fOnMouseRelativeMovement)
+                    m_fOnMouseRelativeMovement(mouse_raw_x, mouse_raw_y);
+            }
+
+            // process the next raw input block
+            pri = NEXTRAWINPUTBLOCK(pri);
+        }
+    }
+}
