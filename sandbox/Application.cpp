@@ -55,11 +55,25 @@ bool Application::Init()
     window_system->SetKeyboardCallbacks(WindowEventHandler_OnKeyDown,
         WindowEventHandler_OnKeyUp, WindowEventHandler_OnLostKeyboardFocus);
 
+    // relative mouse movement handler
+    auto WindowEventHandler_OnRelativeMouseMovement = [&](i64 delta_x, i64 delta_y)
+    {
+        // use the raw input data of the mouse
+    };
+
+    // register our mouse callbacks
+    // NOTE: we might want to pass the events to our input system in the future
+    window_system->SetMouseCallbacks(WindowEventHandler_OnRelativeMouseMovement,
+        nullptr, nullptr, nullptr, nullptr);
+
     // update the window for it to stay responsive and process input
     // when the user closes the window, Update() will return true,
     // which causes this loop to stop looping
     while (!window_system->Update())
     {
+        // poll and process input messages (raw input)
+        window_system->ProcessRawInput();
+
         // TODO: replace this loop with an actual game loop
         continue;
     }
