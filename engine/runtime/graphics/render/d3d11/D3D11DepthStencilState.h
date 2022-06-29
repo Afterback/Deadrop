@@ -12,6 +12,9 @@ namespace deadrop
             D3D11DepthStencilState() = default;
             const DepthStencilStateDesc& GetDesc() override;
 
+            // returns a pointer to the actual resource
+            ID3D11DepthStencilState* Get();
+
         private:
             bool Create(const DepthStencilStateDesc& desc);
             friend class D3D11RenderContext;

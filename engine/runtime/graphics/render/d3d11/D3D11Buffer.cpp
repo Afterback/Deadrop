@@ -169,3 +169,8 @@ const BufferDesc& D3D11Buffer::GetDesc()
 {
     return m_desc;
 }
+
+ID3D11Buffer* D3D11Buffer::Get()
+{
+    return m_buffer.Get();
+}

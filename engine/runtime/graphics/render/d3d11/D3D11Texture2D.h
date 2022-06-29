@@ -18,6 +18,9 @@ namespace deadrop
             unsigned int GetHeight() override;
             const Texture2DDesc& GetDesc() override;
 
+            // returns a pointer to the actual resource
+            ID3D11Texture2D* Get();
+
         private:
             bool Create(const Texture2DDesc& desc, const memory::MemoryBlock& data,
                 const std::vector<memory::MemoryBlock>& dataArray);

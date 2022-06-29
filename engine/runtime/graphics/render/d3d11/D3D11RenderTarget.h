@@ -14,6 +14,9 @@ namespace deadrop
             // default constructor
             D3D11RenderTarget() = default;
 
+            // returns a pointer to the actual resource
+            ID3D11RenderTargetView* Get();
+
         private:
             // private creation function
             bool Create(ITexture2D* texture);

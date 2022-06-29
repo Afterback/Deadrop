@@ -26,3 +26,8 @@ bool D3D11RenderTarget::Create(ITexture2D* texture)
 
     return false;
 }
+
+ID3D11RenderTargetView* D3D11RenderTarget::Get()
+{
+    return m_renderTargetView.Get();
+}

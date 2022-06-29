@@ -34,3 +34,8 @@ const RasterizerStateDesc& D3D11RasterizerState::GetDesc()
 {
     return m_desc;
 }
+
+ID3D11RasterizerState* D3D11RasterizerState::Get()
+{
+    return m_rasterizerState.Get();
+}

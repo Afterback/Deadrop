@@ -48,3 +48,8 @@ const DepthStencilStateDesc& D3D11DepthStencilState::GetDesc()
 {
     return m_desc;
 }
+
+ID3D11DepthStencilState* D3D11DepthStencilState::Get()
+{
+    return m_depthStencilState.Get();
+}

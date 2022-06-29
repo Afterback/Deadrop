@@ -52,3 +52,8 @@ const UniformBufferDesc& D3D11UniformBuffer::GetDesc()
 {
     return m_desc;
 }
+
+ID3D11Buffer* D3D11UniformBuffer::Get()
+{
+    return m_buffer.Get();
+}

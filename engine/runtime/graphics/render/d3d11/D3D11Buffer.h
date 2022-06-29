@@ -18,6 +18,9 @@ namespace deadrop
             uint32_t GetByteSize() const override;
             const BufferDesc& GetDesc() override;
 
+            // returns a pointer to the actual resource
+            ID3D11Buffer* Get();
+
         private:
             bool CreateVertexBuffer(const BufferDesc& desc, const memory::MemoryBlock& data);
             bool CreateIndexBuffer(const BufferDesc& desc, const memory::MemoryBlock& data);

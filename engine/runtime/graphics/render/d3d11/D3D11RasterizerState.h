@@ -12,6 +12,9 @@ namespace deadrop
             D3D11RasterizerState() = default;
             const RasterizerStateDesc& GetDesc() override;
 
+            // returns a pointer to the actual resource
+            ID3D11RasterizerState* Get();
+
         private:
             bool Create(const RasterizerStateDesc& desc);
             friend class D3D11RenderContext;

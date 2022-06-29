@@ -15,6 +15,9 @@ namespace deadrop
             virtual bool Commit() override;
             virtual const UniformBufferDesc& GetDesc() override;
 
+            // returns a pointer to the actual resource
+            ID3D11Buffer* Get();
+
         private:
             bool Create(const UniformBufferDesc& desc, const std::vector<std::string>& variableNames);
             friend class D3D11RenderContext;

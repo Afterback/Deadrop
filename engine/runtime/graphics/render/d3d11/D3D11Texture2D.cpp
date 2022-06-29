@@ -157,6 +157,11 @@ unsigned int D3D11Texture2D::GetHeight()
     return m_desc.height;
 }
 
+ID3D11Texture2D* D3D11Texture2D::Get()
+{
+    return m_texture.Get();
+}
+
 bool D3D11Depth2D::Create(const Texture2DDesc& desc)
 {
     m_desc = desc;
