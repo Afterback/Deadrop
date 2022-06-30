@@ -27,7 +27,7 @@ workspace "ProjectDeadrop"
 		-- Each configuration has its own obj file dir
 		objdir ("build/" .. _ACTION .. "/obj")
 		-- Disable precompiled headers
-		flags { "NoPCH", "NoManifest" }
+		flags { "NoPCH", "NoManifest", "MultiProcessorCompile"}
 		cppdialect "C++17" 
 		characterset "Unicode"
 	
