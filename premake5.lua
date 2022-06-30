@@ -51,9 +51,9 @@ workspace "ProjectDeadrop"
 		
 	filter ""
 		
-	-- Enable Full symbols for Debug and Release builds if using VS2017
-	filter { "action:vs2019" and "configurations:Debug" or "configurations:Release" }
-		symbols "Full" -- Visual Studio 2017 or newer
+	-- Enable Full symbols for Debug and Release builds for Visual Studio
+	filter { "action:vs*" and "configurations:Debug" or "configurations:Release" }
+		symbols "Full"
 		
 	-- Use latest available winsdk
 	filter {"system:windows", "action:vs*"}
