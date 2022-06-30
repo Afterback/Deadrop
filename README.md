@@ -9,7 +9,7 @@ The engine was written from 2017 to 2019 with the goal of exploring games and gr
 ## Technologies
 - Written in modern C++17.
 - Uses DirectX 11 Graphics API (as the main back-end by abstracting it).
-- Compiles using Visual Studio 2019
+- Compiles using Visual Studio 2022 (might work with 2019)
 - Premake5 build system.
 
 ## What's in it for you?
@@ -21,9 +21,9 @@ The engine was written from 2017 to 2019 with the goal of exploring games and gr
 - Download the latest Premake5 build system from (https://premake.github.io).
 - Clone this repository using git, or just download it as a ZIP file.
 - Run Premake5 on the project's root directory (where premake5.lua is) like this:  
-  > premake5 vs2019  
+  > premake5 vs2022  
   
-  This will generate a new directory at 'build/vs2019' which will contain the Visual Studio solution.
+  This will generate a new directory at 'build/vs2022' which will contain the Visual Studio solution.
 - Open the ProjectDeadrop.sln in Visual Studio and compile.
 
 ## Where is the rest of the code?
