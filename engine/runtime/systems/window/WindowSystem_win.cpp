@@ -1,6 +1,7 @@
 #include "WindowSystem.h"
 using namespace deadrop::systems;
 
+#define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 // for GET_X_LPARAM and GET_Y_LPARAM
 #include <windowsx.h>
