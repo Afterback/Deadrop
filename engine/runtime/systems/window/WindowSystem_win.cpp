@@ -422,6 +422,22 @@ bool WindowSystem::Show()
     return false;
 }
 
+bool WindowSystem::IsWindowVisible()
+{
+    // NOTE: to avoid name collision with our own function and the Windows api function
+    using ::IsWindowVisible;
+
+    if (m_window_handle)
+    {
+        auto hwnd = static_cast<HWND>(m_window_handle);
+        bool window_visible = IsWindowVisible(hwnd) && !IsIconic(hwnd);
+        return window_visible;
+    }
+
+    // return false if the window handle is not valid
+    return false;
+}
+
 bool WindowSystem::Hide()
 {
     if (m_window_handle)

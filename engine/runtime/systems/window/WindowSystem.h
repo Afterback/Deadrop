@@ -69,6 +69,12 @@ namespace deadrop
             // and false if it was not previously visible
             bool Show();
 
+            // check the visibility state of the window
+            // returns true if the window is visible, and false if it is not visible
+            // NOTE: this function might return true even if the window is totatlly obscured
+            // by other windows, since it just checks for a visibility flag and not coverage
+            bool IsWindowVisible();
+
             // hides the window
             bool Hide();
 
