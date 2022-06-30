@@ -24,6 +24,9 @@ int CALLBACK WinMain(
         return -1;
     }
 
+    // call the cleanup function
+    app.Destroy();
+
     return 0;
 }
 #else
