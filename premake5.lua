@@ -6,6 +6,10 @@ workspace "ProjectDeadrop"
 	platforms { "x32", "x64" }
 	objdir "build/bin/%{cfg.platform}_%{cfg.buildcfg}"
     location ("build/" .. _ACTION)
+	-- set "SandboxGame" project as the startup project
+	-- to prevent Visual Studio from throwing an error when
+	-- it tries to launch a library instead of an executable
+	startproject "SandboxGame"
 	
 	filter "platforms:x32"
 		architecture "x32"
