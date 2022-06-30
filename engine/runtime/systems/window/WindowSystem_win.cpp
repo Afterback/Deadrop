@@ -100,14 +100,14 @@ bool WindowSystem::Init(WindowDesc& windowDesc)
         hInstance,
         this
     );
-    if (m_window_handle == nullptr)
+    if (m_window_handle == NULL)
     {
         return false;
     }
 
     // register raw mouse input so we can receives messages about it
-    registerRawMouseInput(static_cast<HWND>(m_window_handle));
-    UpdateWindow(static_cast<HWND>(m_window_handle));
+    registerRawMouseInput(m_window_handle);
+    UpdateWindow(m_window_handle);
 
     return true;
 }
@@ -115,7 +115,7 @@ bool WindowSystem::Init(WindowDesc& windowDesc)
 void WindowSystem::Destroy()
 {
     // destroy the window
-    DestroyWindow(static_cast<HWND>(m_window_handle));
+    DestroyWindow(m_window_handle);
 }
 
 u32 translateVirtualKey(WPARAM wParam, LPARAM lParam)
@@ -415,7 +415,7 @@ bool WindowSystem::Show()
 {
     if (m_window_handle)
     {
-        bool window_previously_visible = ShowWindow(static_cast<HWND>(m_window_handle), SW_SHOWNORMAL) != 0;
+        bool window_previously_visible = ShowWindow(m_window_handle, SW_SHOWNORMAL) != 0;
         return window_previously_visible;
     }
 
@@ -429,12 +429,11 @@ bool WindowSystem::IsWindowVisible()
 
     if (m_window_handle)
     {
-        auto hwnd = static_cast<HWND>(m_window_handle);
-        bool window_visible = IsWindowVisible(hwnd) && !IsIconic(hwnd);
+        bool window_visible = IsWindowVisible(m_window_handle) && !IsIconic(m_window_handle);
         return window_visible;
     }
 
-    // return false if the window handle is not valid
+    // return false if the window 
     return false;
 }
 
@@ -442,7 +441,7 @@ bool WindowSystem::Hide()
 {
     if (m_window_handle)
     {
-        bool success = ShowWindow(static_cast<HWND>(m_window_handle), SW_HIDE);
+        bool success = ShowWindow(m_window_handle, SW_HIDE);
         return success;
     }
 
@@ -463,7 +462,7 @@ void WindowSystem::ConfineCursor(bool confine)
 
         // confine the cursor to the application's window.
         RECT window_rect{ 0 };
-        GetWindowRect(static_cast<HWND>(m_window_handle), &window_rect);
+        GetWindowRect(m_window_handle, &window_rect);
         if (ClipCursor(&window_rect) == 0)
         {
             // error, ClipCursor() failed, call GetLastError() for more info
@@ -481,7 +480,7 @@ void WindowSystem::ConfineCursor(bool confine)
 deadrop::pair<unsigned int, unsigned int> WindowSystem::GetClientSize()
 {
     RECT rect{ 0 };
-    if (GetClientRect(static_cast<HWND>(m_window_handle), &rect))
+    if (GetClientRect(m_window_handle, &rect))
     {
         return
         {
@@ -496,7 +495,7 @@ deadrop::pair<unsigned int, unsigned int> WindowSystem::GetClientSize()
 deadrop::pair<unsigned int, unsigned int> WindowSystem::GetWindowSize()
 {
     RECT rect{ 0 };
-    if (GetWindowRect(static_cast<HWND>(m_window_handle), &rect))
+    if (GetWindowRect(m_window_handle, &rect))
     {
         return
         {

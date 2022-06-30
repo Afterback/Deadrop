@@ -108,7 +108,9 @@ namespace deadrop
 
         private:
             WindowDesc m_window_desc;
-            void* m_window_handle = nullptr;
+#ifdef PROJECT_PLATFORM_WIN
+            HWND m_window_handle = nullptr;
+#endif
             bool m_window_exiting = false;
             pair<unsigned int, unsigned int> m_window_size;
 
