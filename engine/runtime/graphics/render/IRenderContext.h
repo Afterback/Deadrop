@@ -69,6 +69,7 @@ namespace deadrop
             bool windowed;
             unsigned short refreshRateNom;
             unsigned short refreshRateDenom;
+            void* windowHandle;
         };
 
         // an interface to expose the functionality of the gpu pipeline

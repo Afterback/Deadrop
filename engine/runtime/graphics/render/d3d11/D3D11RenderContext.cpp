@@ -97,13 +97,6 @@ bool D3D11RenderContext::CreateSwapchain(const SwapchainDesc& swapchainDesc)
     }
 
     // create the swapchain
-    // get a handle to the window we will be rendering into
-    HWND hWnd = FindWindowEx(nullptr, nullptr, L"RenderWindow", nullptr);
-    if (hWnd == nullptr)
-    {
-        // error, invalid windows handle, a valid window handle is required to create the swapchain 
-        return false;
-    }
 
     // fill in the d3d11 swapchain description
     DXGI_FORMAT D3DswapChainFormat = D3D11Common::ResolveType(swapchainDesc.format);
@@ -116,7 +109,7 @@ bool D3D11RenderContext::CreateSwapchain(const SwapchainDesc& swapchainDesc)
     D3DswapchainDesc.BufferDesc.RefreshRate.Numerator = swapchainDesc.refreshRateNom;
     D3DswapchainDesc.BufferDesc.RefreshRate.Denominator = swapchainDesc.refreshRateDenom;
     D3DswapchainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    D3DswapchainDesc.OutputWindow = hWnd;
+    D3DswapchainDesc.OutputWindow = static_cast<HWND>(swapchainDesc.windowHandle);
     D3DswapchainDesc.SampleDesc.Count = 1;
     D3DswapchainDesc.SampleDesc.Quality = 0;
     D3DswapchainDesc.Windowed = swapchainDesc.windowed;
