@@ -169,10 +169,22 @@ uptr<IBuffer> D3D11RenderContext::CreateBuffer(BufferDesc& desc, const MemoryBlo
     return ptr->Create(desc, data) ? std::move(ptr) : nullptr;
 }
 
-uptr<IShader> D3D11RenderContext::CreateShader(const ShaderDesc& desc)
+uptr<IShader> D3D11RenderContext::CreateShaderFromFile(const ShaderDesc& desc, const std::wstring& filePath)
 {
     // forward the call to the appropriate object
-    return std::make_unique<D3D11Shader>(desc);
+    auto ptr = std::make_unique<D3D11Shader>(desc);
+    // compile the shader
+    bool compiled = ptr->Compile(filePath);
+    if (compiled)
+    {
+        // compiled successfully
+        return std::move(ptr);
+    }
+    else
+    {
+        // error, failed to compile
+        return nullptr;
+    }
 }
 
 uptr<ITexture2D> D3D11RenderContext::CreateDepth2D(const Texture2DDesc& desc)

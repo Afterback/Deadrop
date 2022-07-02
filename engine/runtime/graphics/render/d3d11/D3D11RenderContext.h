@@ -25,7 +25,7 @@ namespace deadrop
                 const std::vector<memory::MemoryBlock>& dataArray) override;
 
             virtual uptr<IBuffer> CreateBuffer(BufferDesc& desc, const memory::MemoryBlock& data) override;
-            virtual uptr<IShader> CreateShader(const ShaderDesc& desc) override;
+            virtual uptr<IShader> CreateShaderFromFile(const ShaderDesc& desc, const std::wstring& filePath) override;
             virtual uptr<ITexture2D> CreateDepth2D(const Texture2DDesc& desc) override;
             virtual uptr<IViewport> CreateViewport(const ViewportDesc& desc) override;
             virtual uptr<IRenderTarget> CreateRenderTarget(ITexture2D* texture) override;

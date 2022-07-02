@@ -17,7 +17,6 @@ namespace deadrop
             D3D11Shader(const ShaderDesc& desc) : m_desc(desc) {}
             ~D3D11Shader() {}
 
-            virtual bool Compile() override;
             virtual IUniformBuffer* GetUniformBufferByName(const std::string& name) override;
             virtual SHADER_TYPE GetType() override { return m_desc.type; }
             virtual ShaderDesc GetDesc() override { return m_desc; }
@@ -45,6 +44,7 @@ namespace deadrop
             HRESULT CreateInputLayoutFromBlob(ID3DBlob* shaderBlob, ID3D11InputLayout** inputLayout);
             HRESULT CompileShaderFromFile(const WCHAR * filename, LPCSTR entryPoint, LPCSTR shaderModel);
             DXGI_FORMAT GetFormatFromComponetType(D3D_REGISTER_COMPONENT_TYPE componentType, unsigned int componentsCount);
+            bool Compile(const std::wstring& filePath);
         };
     }
 }

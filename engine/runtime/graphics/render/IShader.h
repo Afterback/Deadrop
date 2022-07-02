@@ -22,7 +22,6 @@ namespace deadrop
             SHADER_TYPE	type;
             std::string entry;
             std::string model;
-            std::string filePath;
         };
 
         // an interface to expose the shader functionality
@@ -35,9 +34,6 @@ namespace deadrop
             {
                 return static_cast<T*>(base->data.get());
             }
-
-            // compiles the shader
-            virtual bool Compile() = 0;
 
             // returns the uniform buffer object by name
             virtual IUniformBuffer* GetUniformBufferByName(const std::string& name) = 0;

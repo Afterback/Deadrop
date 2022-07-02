@@ -87,7 +87,7 @@ namespace deadrop
 
             virtual uptr<IBuffer>				CreateBuffer(BufferDesc& desc, 
                 const memory::MemoryBlock& data = memory::MemoryBlock{ 0, nullptr }) = 0;
-            virtual uptr<IShader>               CreateShader(const ShaderDesc& desc) = 0;
+            virtual uptr<IShader>               CreateShaderFromFile(const ShaderDesc& desc, const std::wstring& filePath) = 0;
             virtual uptr<ITexture2D>            CreateDepth2D(const Texture2DDesc& desc) = 0;
             virtual uptr<IViewport>             CreateViewport(const ViewportDesc& desc) = 0;
             virtual uptr<IRenderTarget>         CreateRenderTarget(ITexture2D* texture) = 0;

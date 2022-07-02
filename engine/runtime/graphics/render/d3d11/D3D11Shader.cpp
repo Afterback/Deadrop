@@ -14,11 +14,10 @@ using namespace deadrop::render;
 #include <fstream>
 
 
-bool D3D11Shader::Compile()
+bool D3D11Shader::Compile(const std::wstring& filePath)
 {
-    std::wstring filePath(m_desc.filePath.begin(), m_desc.filePath.end());
     // check if the file exists first
-    std::ifstream file(m_desc.filePath);
+    std::ifstream file(filePath);
     if (file.good() != true)
     {
         // error, shader file does not exist in the specified path
