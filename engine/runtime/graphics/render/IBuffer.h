@@ -17,11 +17,11 @@ namespace deadrop
         // descriptor of the buffer, used in creation
         struct BufferDesc
         {
-            BUFFER_TYPE type;
+            BUFFER_TYPE type{};
             // NOTE: actual byte size is calculated as 'size * stride'
-            unsigned int count;
-            USAGE usage;
-            CPU_ACCESS access;
+            unsigned int count = 0;
+            USAGE usage{};
+            CPU_ACCESS access{};
             unsigned int stride = 1;
         };
 

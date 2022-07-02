@@ -19,7 +19,7 @@ namespace deadrop
             bool Create(const RasterizerStateDesc& desc);
             friend class D3D11RenderContext;
 
-            D3D11_RASTERIZER_DESC m_d3dRasterizerState;
+            D3D11_RASTERIZER_DESC m_d3dRasterizerState{};
             ComPtr<ID3D11RasterizerState> m_rasterizerState;
             RasterizerStateDesc m_desc;
         };

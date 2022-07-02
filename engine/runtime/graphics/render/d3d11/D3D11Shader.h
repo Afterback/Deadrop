@@ -29,7 +29,7 @@ namespace deadrop
             // holds a ID3D11VertexShader or ID3D11PixelShader or...
             union
             {
-                ComPtr<ID3D11VertexShader> m_vertexShader;
+                ComPtr<ID3D11VertexShader> m_vertexShader = nullptr;
                 ComPtr<ID3D11PixelShader> m_pixelShader;
                 ComPtr<ID3D11GeometryShader> m_geometryShader;
                 ComPtr<ID3D11ComputeShader> m_computeShader;

@@ -19,7 +19,7 @@ namespace deadrop
             bool Create(const DepthStencilStateDesc& desc);
             friend class D3D11RenderContext;
             ComPtr<ID3D11DepthStencilState> m_depthStencilState;
-            DepthStencilStateDesc m_desc;
+            DepthStencilStateDesc m_desc{};
         };
     }
 }

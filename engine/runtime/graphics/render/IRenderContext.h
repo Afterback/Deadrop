@@ -46,16 +46,16 @@ namespace deadrop
         // bit-depth
         struct VideoMode
         {
-            unsigned int width;
-            unsigned int height;
-            int8_t		 bitsPerPixel;
+            unsigned int width = 0;
+            unsigned int height = 0;
+            int8_t		 bitsPerPixel = 0;
         };
 
         // a descriptor that defines resolution and presentation formate
         struct DeviceDesc
         {
-            unsigned int width;
-            unsigned int height;
+            unsigned int width = 0;
+            unsigned int height = 0;
             TEXTURE2D_FORMAT format = TEXTURE2D_FORMAT::RGBA_8UN;
         };
 

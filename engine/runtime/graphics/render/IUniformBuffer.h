@@ -17,11 +17,11 @@ namespace deadrop
         struct UniformBufferDesc
         {
             std::string name;
-            size_t size;
-            unsigned int bindSlot;
-            unsigned int variableNum;
-            UNIFORM_BUFFER_TYPE type;
-            unsigned int flags;
+            size_t size = 0;
+            unsigned int bindSlot = 0;
+            unsigned int variableNum = 0;
+            UNIFORM_BUFFER_TYPE type{};
+            unsigned int flags = 0;
         };
 
         // an interface to expose uniform buffers functionalities (constant-buffer in d3d terminology)

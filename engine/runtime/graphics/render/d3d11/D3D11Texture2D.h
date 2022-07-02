@@ -30,7 +30,7 @@ namespace deadrop
             friend class D3D11RenderContext;
 
             Texture2DDesc m_desc;
-            DXGI_FORMAT m_d3dFormat;
+            DXGI_FORMAT m_d3dFormat{};
             ComPtr<ID3D11Texture2D> m_texture = nullptr;
             ComPtr<ID3D11ShaderResourceView> m_shaderResourceView = nullptr;
         };
@@ -51,7 +51,7 @@ namespace deadrop
             friend class D3D11RenderContext;
 
             Texture2DDesc m_desc;
-            DXGI_FORMAT m_d3dFormat;
+            DXGI_FORMAT m_d3dFormat{};
             ComPtr<ID3D11Texture2D> m_texture = nullptr;
             ComPtr<ID3D11DepthStencilView> m_depthStencilView = nullptr;
         };
