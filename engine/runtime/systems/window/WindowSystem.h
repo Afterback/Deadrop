@@ -100,13 +100,6 @@ namespace deadrop
             // NOTE: this function can process multiple input messages at once (currently the max count is 16 messages per-call)
             void ProcessRawInput();
 
-            // message loop
-            // NOTE: on Windows, this is a redirected WndProc
-            // NOTE: it must be public so that the actual WndProc can call it
-#ifdef PROJECT_PLATFORM_WIN
-            LRESULT message_loop(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-#endif
-
         private:
             WindowDesc m_window_desc;
 #ifdef PROJECT_PLATFORM_WIN
@@ -131,6 +124,15 @@ namespace deadrop
             std::function<void(u8)> m_fOnMouseKeyDown;
             std::function<void(u8)> m_fOnMouseKeyUp;
             std::function<void(bool)> m_fOnMouseWheel;
+
+#ifdef PROJECT_PLATFORM_WIN
+            // message loop
+            // NOTE: on Windows, this function gets called by WndProc (WndProc is redirected to here)
+            LRESULT message_loop(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+
+            // NOTE: we must set WndProc as a friend so it can call our member function message_loop()
+            friend LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+#endif
         };
     }
 }

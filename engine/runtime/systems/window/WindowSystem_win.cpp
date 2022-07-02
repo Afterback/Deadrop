@@ -6,7 +6,8 @@ using namespace deadrop::systems;
 // for GET_X_LPARAM and GET_Y_LPARAM
 #include <windowsx.h>
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+// NOTE: because of how Windows works, WndProc must be a global function and not a member function
+LRESULT CALLBACK deadrop::systems::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     if (LONG_PTR user_data = GetWindowLongPtr(hWnd, GWLP_USERDATA))
     {
