@@ -17,8 +17,8 @@ namespace deadrop
     {
         struct WindowDesc
         {
-            unsigned int width;
-            unsigned int height;
+            unsigned int width = 0;
+            unsigned int height = 0;
             std::string name;
             std::string title;
         };
@@ -109,9 +109,9 @@ namespace deadrop
             pair<unsigned int, unsigned int> m_window_size;
 
             // to keep track of the cursor
-            bool m_cursor_confined;
+            bool m_cursor_confined = false;
 #ifdef PROJECT_PLATFORM_WIN
-            RECT m_old_cursor_clip;
+            RECT m_old_cursor_clip{};
 #endif
 
             // keyboard callback functions
