@@ -95,6 +95,12 @@ namespace deadrop
                 return temp;
             }
 
+            // returns the identity matrix
+            static Matrix4x4 Identity()
+            {
+                return Matrix4x4(1.0f, 1.0f, 1.0f, 1.0f);
+            }
+
         private:
             float mat[4][4];
         };
