@@ -99,4 +99,7 @@ namespace deadrop
             float mat[4][4];
         };
     }
+
+    // alias
+    using mat4f = math::Matrix4x4;
 }
