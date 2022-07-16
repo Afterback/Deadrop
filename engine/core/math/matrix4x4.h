@@ -95,6 +95,13 @@ namespace deadrop
                 return temp;
             }
 
+            // returns a reference to a single element in the matrix at a specific location
+            float& operator ()(size_t i, size_t j)
+            {
+                // TODO: assert here to make sure we do not access out of bounds
+                return mat[i][j];
+            }
+
             // returns the identity matrix
             static Matrix4x4 Identity()
             {
