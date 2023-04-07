@@ -9,7 +9,7 @@ f64 Chrono::GetTimeDiffInMicro(Chrono::time_point start, Chrono::time_point end)
     return static_cast<f64>(time_difference_microseconds);
 }
 
-u64 Chrono::GetHighResolutionTimeSinceEpoch()
+u64 Chrono::NowSinceEpoch()
 {
     auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>
         (std::chrono::steady_clock::now().time_since_epoch()).count();

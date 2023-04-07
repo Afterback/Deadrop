@@ -21,7 +21,7 @@ namespace deadrop
 
         // returns the number of milliseconds since the clock's epoch
         // NOTE: this clock is steady which means it will only increment, will not go back in time
-        [[nodiscard]] static u64 GetHighResolutionTimeSinceEpoch();
+        [[nodiscard]] static u64 NowSinceEpoch();
     };
 
     // inline functions
