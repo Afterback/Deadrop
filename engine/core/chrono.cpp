@@ -2,7 +2,7 @@
 using namespace deadrop;
 
 
-Chrono::time_point Chrono::GetHighResolutionNowTimepoint()
+Chrono::time_point Chrono::Now()
 {
     return std::chrono::steady_clock::now();
 }

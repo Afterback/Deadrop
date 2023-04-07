@@ -13,7 +13,7 @@ namespace deadrop
 
         // returns a high-resolution timepoint that can be used to calculate time difference between two different timepoints
         [[nodiscard]]
-        inline static time_point GetHighResolutionNowTimepoint();
+        inline static time_point Now();
 
         // returns the time difference between two different time points in micro-seconds
         [[nodiscard]]
