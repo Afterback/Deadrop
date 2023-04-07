@@ -2,7 +2,7 @@
 using namespace deadrop;
 
 
-f64 Chrono::GetTimepointDifference(Chrono::time_point start, Chrono::time_point end)
+f64 Chrono::GetTimeDiffInMicro(Chrono::time_point start, Chrono::time_point end)
 {
     auto time_difference_microseconds = std::chrono::duration_cast<std::chrono::microseconds>
         (end - start).count();

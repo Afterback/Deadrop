@@ -17,7 +17,7 @@ namespace deadrop
 
         // returns the time difference between two different time points in micro-seconds
         [[nodiscard]]
-        static f64 GetTimepointDifference(time_point start, time_point end);
+        static f64 GetTimeDiffInMicro(time_point start, time_point end);
 
         // returns the number of milliseconds since the clock's epoch
         // NOTE: this clock is steady which means it will only increment, will not go back in time
