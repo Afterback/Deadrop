@@ -15,11 +15,3 @@ u64 Chrono::GetHighResolutionTimeSinceEpoch()
         (std::chrono::steady_clock::now().time_since_epoch()).count();
     return milliseconds;
 }
-
-u64 Chrono::GetHighResolutionSinceFirstCall()
-{
-    static auto start_timepoint = std::chrono::steady_clock::now();
-    auto now_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>
-        (std::chrono::steady_clock::now() - start_timepoint).count();
-    return now_milliseconds;
-}

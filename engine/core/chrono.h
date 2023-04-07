@@ -22,11 +22,6 @@ namespace deadrop
         // returns the number of milliseconds since the clock's epoch
         // NOTE: this clock is steady which means it will only increment, will not go back in time
         [[nodiscard]] static u64 GetHighResolutionTimeSinceEpoch();
-
-        // returns the number of milliseconds since the first call to this function
-        // NOTE: call this function at the very start of the program to get the time since the start
-        // NOTE: this function uses a static variable to initialize the first time point
-        [[nodiscard]] static u64 GetHighResolutionSinceFirstCall();
     };
 
     // inline functions
