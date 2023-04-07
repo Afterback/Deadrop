@@ -17,7 +17,7 @@ namespace deadrop
 
         // returns the time difference between two different time points in micro-seconds
         [[nodiscard]]
-        inline static f64 GetTimepointDifference(time_point start, time_point end);
+        static f64 GetTimepointDifference(time_point start, time_point end);
 
         // returns the number of milliseconds since the clock's epoch
         // NOTE: this clock is steady which means it will only increment, will not go back in time
@@ -28,4 +28,10 @@ namespace deadrop
         // NOTE: this function uses a static variable to initialize the first time point
         [[nodiscard]] static u64 GetHighResolutionSinceFirstCall();
     };
+
+    // inline functions
+    inline Chrono::time_point Chrono::Now()
+    {
+        return std::chrono::steady_clock::now();
+    }
 }

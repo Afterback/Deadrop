@@ -2,11 +2,6 @@
 using namespace deadrop;
 
 
-Chrono::time_point Chrono::Now()
-{
-    return std::chrono::steady_clock::now();
-}
-
 f64 Chrono::GetTimepointDifference(Chrono::time_point start, Chrono::time_point end)
 {
     auto time_difference_microseconds = std::chrono::duration_cast<std::chrono::microseconds>
