@@ -1,0 +1,30 @@
+#include "chrono.h"
+using namespace deadrop;
+
+
+Chrono::time_point Chrono::GetHighResolutionNowTimepoint()
+{
+    return std::chrono::steady_clock::now();
+}
+
+f64 Chrono::GetTimepointDifference(Chrono::time_point start, Chrono::time_point end)
+{
+    auto time_difference_microseconds = std::chrono::duration_cast<std::chrono::microseconds>
+        (end - start).count();
+    return static_cast<f64>(time_difference_microseconds);
+}
+
+u64 Chrono::GetHighResolutionTimeSinceEpoch()
+{
+    auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>
+        (std::chrono::steady_clock::now().time_since_epoch()).count();
+    return milliseconds;
+}
+
+u64 Chrono::GetHighResolutionSinceFirstCall()
+{
+    static auto start_timepoint = std::chrono::steady_clock::now();
+    auto now_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>
+        (std::chrono::steady_clock::now() - start_timepoint).count();
+    return now_milliseconds;
+}
