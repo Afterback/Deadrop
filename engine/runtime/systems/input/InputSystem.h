@@ -176,12 +176,12 @@ namespace deadrop
             // NOTE: this function is meant to have high-resolution (raw-input) and no acceleration or cursor ballistics.
             // NOTE: do not attempt to accumulate the results returned by this function hoping to get absolute mouse position!
             // NOTE: this function is only useful in things such as controling a game camera, not to be used for user-interfaces.
-            vec2f GetMouseRelativeMovement();
+            math::vec2f GetMouseRelativeMovement();
 
             // Return the mouse position relative to the window (top-left is the 0,0 coordinate)
             // NOTE: this function returns mouse position that is relative the to the window, use it for UI,
             // instead of GetMouseRelativeMovement()
-            vec2f GetMousePosition();
+            math::vec2f GetMousePosition();
 
             // Return true when the mouse wheel is rotated in the specified direction
             // NOTE: this function acts like IsKeyPressed, but it's more frequent because of the nature of the mouse wheel
@@ -222,11 +222,11 @@ namespace deadrop
 
             // variables for relative mouse movement
             bool m_mouse_moved = false;
-            vec2f m_mouse_raw_movement{ 0.0f, 0.0f };
-            vec2f m_mouse_perframe_delta{ 0.0f, 0.0f };
+            math::vec2f m_mouse_raw_movement{ 0.0f, 0.0f };
+            math::vec2f m_mouse_perframe_delta{ 0.0f, 0.0f };
             // variables for regular mouse movement
-            vec2f m_mouse_position = { 0.0f, 0.0f };
-            vec2f m_mouse_perframe_position{ 0.0f, 0.0f };
+            math::vec2f m_mouse_position = { 0.0f, 0.0f };
+            math::vec2f m_mouse_perframe_position{ 0.0f, 0.0f };
             pair<bool, MOUSE_WHEEL_DIRECTION> m_mouse_wheel;
             pair<bool, MOUSE_WHEEL_DIRECTION> m_mouse_wheel_last;
         };

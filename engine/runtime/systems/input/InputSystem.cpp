@@ -282,12 +282,12 @@ u8 InputSystem::mapExtendedToRegularKeys(u8 vk)
     }
 }
 
-vec2f InputSystem::GetMouseRelativeMovement()
+math::vec2f InputSystem::GetMouseRelativeMovement()
 {
     return m_mouse_perframe_delta;
 }
 
-vec2f InputSystem::GetMousePosition()
+math::vec2f InputSystem::GetMousePosition()
 {
     return m_mouse_perframe_position;
 }
